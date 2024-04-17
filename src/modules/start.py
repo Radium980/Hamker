@@ -11,7 +11,7 @@ from src import app
 @app.on_message(filters.command("start"))
 async def start(_, m: Message):
 
-    await m.reply_photo("https://graph.org/file/335375fb9e68fe30dd276.jpg", caption=f"""🥀 ʜᴇʏ {m.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",
+    await m.reply_animation("https://graph.org/file/bcf8feee5135a01700a10.mp4", caption=f"""🥀 ʜᴇʏ {m.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",
                          reply_markup=InlineKeyboardMarkup([
         [InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ᴇʟsᴇ ʏᴏᴜ ɢᴇʏ", url=f"https://t.me/{app.me.username}?startgroup=new")],
         [InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"), InlineKeyboardButton(text="sᴏᴜʀᴄᴇ", callback_data="source")]
@@ -33,6 +33,7 @@ async def cb_func(_, query: CallbackQuery):
 ↬ /shorturl : sʜᴏʀᴛᴇɴs ᴛʜᴇ ɢɪᴠᴇɴ ᴜʀʟ.
 ↬ /start : sᴛᴀʀᴛs ᴍᴇ.
 ↬ /sname : ᴅᴇᴄᴏᴅᴇs ᴛʜᴇ ɴᴀᴍᴇ ᴏғ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ ᴡɪᴛʜ ᴜɴɪᴅᴇᴄᴏᴅᴇ.
+↬ /yt : ʟɪɴᴋ ᴏʀ ɴᴀᴍᴇ ᴏғ ʏᴏᴜᴛᴜʙᴇ ᴠɪᴅᴇᴏ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ.
 ↬ /webss : ᴄᴀᴘᴛᴜʀᴇs ᴀ sᴄʀᴇᴇɴsʜᴏᴛ ᴏғ ᴛʜᴇ ɢɪᴠᴇɴ sɪᴛᴇ.""", 
                                   reply_markup=InlineKeyboardMarkup([
                                       [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="back")]]))
@@ -57,7 +58,7 @@ async def cb_func(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("source"))
 async def cb_func(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"""ғᴏʀ sᴏᴜʀᴄᴇ ᴄᴏɴᴛᴀᴄᴛ @Miryze""",
+    await query.message.edit_text(text=f"""ғᴏʀ sᴏᴜʀᴄᴇ ᴄᴏɴᴛᴀᴄᴛ @Mirzye""",
                                   reply_markup=InlineKeyboardMarkup([
                                       [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="back")]]))
     
