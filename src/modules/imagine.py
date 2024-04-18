@@ -3,9 +3,22 @@ import requests
 import time
 import os
 from src import app 
+from pymongo import MongoClient
+from config import MONGO_DB_URI
+
+DATABASE = MongoClient(MONGO_DB_URI)
+db = DATABASE["MAIN"]["USERS"]
+collection = db["members"]
+
+def add_user_database(user_id: int):
+    check_user = collection.find_one({"user_id": user_id})
+    if not check_user:
+        return collection.insert_one({"user_id": user_id})
 
 @app.on_message(filters.command("imagine", prefixes=["/", "!"]))
 async def draw_prompt(app, message):
+    add_user_database(message.from_user.id)  # Add user to the database
+    
     query = message.text.split(maxsplit=1)[1] if len(message.text.split()) > 1 else "beautiful sunset"
     
     if query.startswith("http"):
