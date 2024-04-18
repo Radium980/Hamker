@@ -10,3 +10,4 @@ BOT_TOKEN = getenv("BOT_TOKEN") #Put your bot token here
 LOG_ID = int(getenv("LOG_ID"))
 OWNER_ID = getenv("OWNER_ID", 6950368169)
 SUDOERS = list(map(int, getenv("SUDOERS", "").split()))
+MONGO_DB_URI = getenv("MONGO_DB_URI", "")
