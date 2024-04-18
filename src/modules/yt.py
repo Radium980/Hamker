@@ -9,7 +9,7 @@ import re
 def is_valid_url(url):
     return re.match(r'^https?://(?:www\.)?youtu\.?be(?:\.com)?/', url, re.IGNORECASE) is not None
 
-@app.on_message(filters.command("hn"))
+@app.on_message(filters.command("yt"))
 async def yt(_, msg: Message):
     try:
         query = msg.text.split(None, 1)[1]
