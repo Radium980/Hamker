@@ -1,21 +1,10 @@
 from pyrogram import filters
 from src import app
 from pyrogram.types import Message
-from pymongo import MongoClient
-from config import MONGO_DB_URI
 
-DATABASE = MongoClient(MONGO_DB_URI)
-db = DATABASE["MAIN"]["USERS"]
-
-def add_user_to_db(user_id):
-    if db.find_one({"user_id": user_id}):
-        return
-    db.insert_one({"user_id": user_id})
 
 @app.on_message(filters.command("img"))
 async def image_info(_, msg: Message):
-    add_user_to_db(msg.from_user.id)
-
     replied_message = msg.reply_to_message
     if replied_message:
         if replied_message.photo:
