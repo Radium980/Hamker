@@ -26,7 +26,7 @@ async def yt(_, msg: Message):
         pop = f"""
 Hᴇʀᴇ ɪs ʏᴏᴜʀ ᴠɪᴅᴇᴏ.
 Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ {msg.from_user.mention}
-Qᴜᴇʀʏ: ```{query}```
+Qᴜᴇʀʏ: `{query}`
 Dᴏᴡɴʟᴏᴀᴅᴇᴅ ʙʏ {app.me.mention}"""
         await msg.reply_video(video=cutie, caption=pop)
         os.remove(cutie)
