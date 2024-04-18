@@ -6,22 +6,10 @@ from src import app
 import os
 import re
 
-pop = f"""Tʜᴀɴᴋs ғᴏʀ ʏᴏᴜʀ ᴘᴀᴛɪᴇɴᴄᴇ. Hᴇʀᴇ ɪs ʏᴏᴜʀ ᴠɪᴅᴇᴏ.
-
-Dᴏᴡɴʟᴏᴀᴅᴇᴅ ʙʏ {app.me.mention}"""
-
 def is_valid_url(url):
-    regex = (
-        r'^https?://'  
-        r'(?:(?:[A-Z0-9-]+\.)+[A-Z]{2,}|'  
-        r'localhost|' 
-        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'  
-        r'(?::\d+)?' 
-        r'(?:/?|[/?]\S+)$'
-    )
-    return re.match(regex, url, re.IGNORECASE) is not None
+    return re.match(r'^https?://(?:www\.)?youtu\.?be(?:\.com)?/', url, re.IGNORECASE) is not None
 
-@app.on_message(filters.command("yt"))
+@app.on_message(filters.command("hn"))
 async def yt(_, msg: Message):
     try:
         query = msg.text.split(None, 1)[1]
@@ -35,7 +23,13 @@ async def yt(_, msg: Message):
         stream = yt.streams.get_highest_resolution()
         cutie = f"video_{random.randint(1000, 9999)}"
         stream.download(filename=cutie)
+        pop = f"""
+Hᴇʀᴇ ɪs ʏᴏᴜʀ ᴠɪᴅᴇᴏ.
+Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ {msg.from_user.mention}
+Qᴜᴇʀʏ: ```{query}```
+Dᴏᴡɴʟᴏᴀᴅᴇᴅ ʙʏ {app.me.mention}"""
         await msg.reply_video(video=cutie, caption=pop)
         os.remove(cutie)
     except Exception as e:
-        await msg.reply_text("Failed to download the video:", e)
+        # Log the error and inform the user
+        await msg.reply_text(f"Failed to download the video: {e}")
