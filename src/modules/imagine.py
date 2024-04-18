@@ -4,7 +4,7 @@ import time
 import os
 from src import app 
 
-@app.on_message(filters.command("segs", prefixes=["/", "!"]))
+@app.on_message(filters.command("imagine", prefixes=["/", "!"]))
 async def draw_prompt(app, message):
     query = message.text.split(maxsplit=1)[1] if len(message.text.split()) > 1 else "beautiful sunset"
     
