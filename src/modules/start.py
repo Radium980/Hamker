@@ -24,7 +24,7 @@ def add_user_database(user_id: int):
 async def tgkichudai(client, message):
     for member in message.new_chat_members:
         if member.id == client.me.id:
-            add_served_chat(message.chat.id)
+            await add_served_chat(message.chat.id)
             await message.reply("ᴛʜᴀɴᴋs ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ ʜᴇʀᴇ !")
 
 
