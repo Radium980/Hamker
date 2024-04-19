@@ -7,6 +7,7 @@ import os
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton, CallbackQuery
+from src.database.chats_db import add_served_chat
 from src import app
 
 DATABASE = MongoClient(MONGO_DB_URI)
@@ -20,7 +21,7 @@ def add_user_database(user_id: int):
 
 
 @app.on_message(filters.new_chat_members, group=69)
-async def chodojake(client, message):
+async def tgkichudai(client, message):
     for member in message.new_chat_members:
         if member.id == client.me.id:
             add_served_chat(message.chat.id)
