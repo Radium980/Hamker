@@ -1,4 +1,4 @@
-from src.database.mongo import db
+from src.database import db
 
 usersdb = db.users
 
