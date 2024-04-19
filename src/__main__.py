@@ -12,7 +12,8 @@ async def eval_bot():
         importlib.import_module(f"src.modules.{all_module}")
     LOGGER.info(f"Successfully loaded {len(ALL_MODULES)}.")
 
-    LOGGER.info("Bot Started")
+    LOGGER.info("Special Thanks to Soumya")
+    LOGGER.info("Bot Started | Must Visit @UnxMusicBot")
     await idle()
 
     try:
