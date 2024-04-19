@@ -31,7 +31,7 @@ async def tgkichudai(client, message):
 @app.on_message(filters.command("start"))
 async def start(_, m: Message):
     add_user_database(m.from_user.id)
-    await m.reply_animation("https://graph.org/file/bcf8feee5135a01700a10.mp4", caption=f"""🥀 ʜᴇʏ {m.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",
+    await m.reply_photo("https://telegra.ph/file/a0d157254f58e0d1a8850.jpg", caption=f"""🥀 ʜᴇʏ {m.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",
                          reply_markup=InlineKeyboardMarkup([
         [InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ᴇʟsᴇ ʏᴏᴜ ɢᴇʏ", url=f"https://t.me/{app.me.username}?startgroup=new")],
         [InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"), InlineKeyboardButton(text="ᴏᴡɴᴇʀ", user_id=6950368169)]
