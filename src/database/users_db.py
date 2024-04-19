@@ -1,6 +1,5 @@
-from config import MONDO_DB_URI
+from src.database.mongo import db
 
-db = MONDO_DB_URI
 usersdb = db.users
 
 async def get_served_users() -> list:
