@@ -18,6 +18,15 @@ def add_user_database(user_id: int):
     if not check_user:
         return collection.insert_one({"user_id": user_id})
 
+
+@app.on_message(filters.new_chat_members, group=69)
+async def chodojake(client, message):
+    for member in message.new_chat_members:
+        if member.id == client.me.id:
+            add_served_chat(message.chat.id)
+            await message.reply("ᴛʜᴀɴᴋs ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ ʜᴇʀᴇ !")
+
+
 @app.on_message(filters.command("start"))
 async def start(_, m: Message):
     add_user_database(m.from_user.id)
