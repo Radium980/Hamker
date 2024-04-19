@@ -1,6 +1,5 @@
-from config import MONGO_DB_URI
+from src.database import db
 
-db = MONGO_DB_URI
 chatsdb = db.chats
 
 async def get_served_chats() -> list:
