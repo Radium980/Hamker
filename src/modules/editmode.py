@@ -1,10 +1,18 @@
 from pymongo import MongoClient 
 from config import MONGO_DB_URI
 from pyrogram import filters
+from pyrogram.enums import ChatMembersFilter
 from src import app 
 
 DATABASE = MongoClient(MONGO_DB_URI)
 DB = DATABASE["MAIN"]["delenable"]
+
+ADMIN = []
+
+async def group_admins(chat_id):
+    async for member in app.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS):
+        ADMIN.append(member.user.id)
+    return ADMIN
 
 def check_groups_enable(group_id: int):
     check_status = DB.find_one({"group_id": group_id})
@@ -26,27 +34,31 @@ def remove_group_enable(group_id: int):
     
 @app.on_message(filters.command("editmode"))
 async def editfunctions(app, message) -> None:
+    group_admin = await group_admins(message.chat.id)
+    if message.from_user.id not in group_admin:
+        return await message.reply("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ.")
+    
     if len(message.command) == 1:
-        return await message.reply("Usage: /editmode on/off")
+        return await message.reply("Usᴀɢᴇ: /editmode on/off")
     status = message.command[1]
     if status == "on":
         check_status = DB.find_one({"group_id": message.chat.id})
         if not check_status:
             add_group_enable(message.chat.id)
-            return await message.reply("edit mode turned on !")
+            return await message.reply("ᴇᴅɪᴛ ᴍᴏᴅᴇ ᴛᴜʀɴᴇᴅ ᴏɴ !")
         else:
-            await message.reply("edit mode already enabled !")
+            await message.reply("ᴇᴅɪᴛ ᴍᴏᴅᴇ ᴀʟʀᴇᴀᴅʏ ᴇɴᴀʙʟᴇᴅ !")
             return
     elif status == "off":
         check_status = DB.find_one({"group_id": message.chat.id})
         if not check_status:
-            return await message.reply("edit mode already disabled !")
+            return await message.reply("ᴇᴅɪᴛ ᴍᴏᴅᴇ ᴀʟʀᴇᴀᴅʏ ᴅɪsᴀʙʟᴇᴅ !")
         else:    
             remove_group_enable(message.chat.id)
-            await message.reply("edit mode turned off !")
+            await message.reply("ᴇᴅɪᴛ ᴍᴏᴅᴇ ᴛᴜʀɴᴇᴅ ᴏғғ !")
             return
     else:
-        return await message.reply("invalid command. try /editmode on/off")
+        return await message.reply("ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ. ᴛʀʏ /editmode on/off")
             
 @app.on_edited_message(filters.text)
 async def workdelete(app, message) -> None:
@@ -54,7 +66,9 @@ async def workdelete(app, message) -> None:
     if not status:
         return
     else:
-        if message.edit_hide != True:
-            await message.reply(f"{message.from_user.mention} just edited a message that's why I deleted 🤡")
-            await message.delete(True) 
-        return
+        group_admin = await group_admins(message.chat.id)
+        if message.from_user.id not in group_admin:
+            if message.edit_hide != True:
+                await message.reply(f"{message.from_user.mention} Jᴜsᴛ ᴇᴅɪᴛᴇᴅ ᴀ ᴍᴇssᴀɢᴇ ᴛʜᴀᴛ's ᴡʜʏ I ᴅᴇʟᴇᴛᴇᴅ 🤡")
+                await message.delete(True) 
+            return
