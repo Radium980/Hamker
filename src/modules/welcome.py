@@ -66,13 +66,13 @@ async def welcomefunc(app, message) -> None:
     else:
         return await message.reply("invalid syntax !")
 
-@app.on_message(filters.new_chat_members, group=69)
-async def okbaby(client, mirza):
-    check = WELCOME_DB.find_one({"group_id": mirza.chat.id})
+@app.on_message(filters.new_chat_members, group=6)
+async def okbaby(client, message):
+    check = WELCOME_DB.find_one({"group_id": message.chat.id})
     if not check:
         return
-    for user in mirza.new_chat_members:
+    for user in message.new_chat_members:
         photo = await client.download_media(user.photo.big_file_id)
-        accha = await pfp(photo, mirza.chat.title, user.id)
-        await mirza.reply_photo(photo=accha)
+        accha = await pfp(photo, message.chat.title, user.id)
+        await message.reply_photo(photo=accha)
 
