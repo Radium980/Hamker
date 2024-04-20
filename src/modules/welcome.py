@@ -74,5 +74,5 @@ async def okbaby(client, mirza):
     for user in mirza.new_chat_members:
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, mirza.chat.title, user.id)
-        await message.reply_photo(photo=accha)
+        await mirza.reply_photo(photo=accha)
 
