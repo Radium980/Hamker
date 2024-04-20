@@ -68,11 +68,11 @@ async def welcomefunc(app, message) -> None:
 
 @app.on_message(filters.new_chat_members, group=6)
 async def okbaby(client, message):
-    check = WELCOME_DB.find_one({"group_id": message.chat.id})
-    if not check:
-        return
     for user in message.new_chat_members:
+        check = WELCOME_DB.find_one({"group_id": message.chat.id})
+        if not check:
+            return
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, message.chat.title, user.id)
-        await message.reply_photo(photo=accha)
+        return await message.reply_photo(photo=accha)
 
