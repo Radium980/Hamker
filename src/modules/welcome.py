@@ -3,6 +3,7 @@ from pyrogram.types import Message
 from src import app
 from src.database.welcome_db import *
 from PIL import Image,ImageOps,ImageDraw,ImageChops, ImageFont
+from src.modules.editmode import group_admin
 
 async def circle(pfp, size=(215, 215)):
     pfp = pfp.resize(size, Image.Resampling.LANCZOS).convert("RGBA")
