@@ -2,15 +2,8 @@ from pyrogram import filters
 from pyrogram.types import Message
 from src import app
 from src.database.welcome_db import *
+from src.modules.editmode import group_admins
 from PIL import Image,ImageOps,ImageDraw,ImageChops, ImageFont
-
-
-ADMIN = []
-
-async def group_admins(chat_id):
-    async for member in app.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS):
-        ADMIN.append(member.user.id)
-    return ADMIN
 
 
 async def circle(pfp, size=(215, 215)):
