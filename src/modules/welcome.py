@@ -68,7 +68,7 @@ async def welcomefunc(app, message) -> None:
 
 @app.on_message(filters.new_chat_members, group=69)
 async def okbaby(client, mirza):
-    check = WELCOME_DB.find_one(mirza.chat.id)
+    check = WELCOME_DB.find_one({"group_id": mirza.chat.id})
     if not check:
         return
     for user in mirza.new_chat_members:
