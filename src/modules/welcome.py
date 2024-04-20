@@ -20,7 +20,7 @@ async def circle(pfp, size=(215, 215)):
 async def pfp(pfp,chat,id):
     if len(chat) > 21:
         chat = chat[0:18] + ".."
-    temp = Image.open("src/pics/bg.jpg")
+    temp = Image.open("./src/pics/bg.jpg")
     pfp = Image.open(pfp).convert("RGBA")
     pfp = await circle(pfp,(363,363))
     m_font = ImageFont.load_default(35)    
@@ -37,8 +37,8 @@ async def pfp(pfp,chat,id):
                 text=str(id),
                 font=i_font,
                 fill=(275,275,275))
-    nice.save(f"src/pics/nice{id}.png")
-    return f"src/pics/nice{id}.png"
+    nice.save(f"./src/pics/nice{id}.png")
+    return f"./src/pics/nice{id}.png"
 
 @app.on_message(filters.command("welcome"))
 async def welcomefunc(app, message) -> None:
