@@ -39,14 +39,14 @@ async def start(_, m: Message):
 
 @app.on_callback_query(filters.regex("help"))
 async def cb_func_help(_, query: CallbackQuery):
-    await query.edit_message_reply_markup(
-        reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text=f"""➻ ʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ᴍᴇɴᴜ ᴏғ {app.me.mention} :""", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ᴀɪ", callback_data="unx_ai"), InlineKeyboardButton(text="ɪᴍᴀɢᴇ ᴀɪ", callback_data="unx_imageai"), InlineKeyboardButton(text="ᴍɪᴅ ᴀɪ", callback_data="unx_midai")],
             [InlineKeyboardButton(text="ᴀʟɪᴠᴇ", callback_data="unx_alive"), InlineKeyboardButton(text="ᴇᴄʜᴏ", callback_data="unx_echo"), InlineKeyboardButton(text="ғɪɢʟᴇᴛ", callback_data="unx_figlet")],
             [InlineKeyboardButton(text="ɪᴍɢ", callback_data="unx_img"), InlineKeyboardButton(text="ᴘɪɴɢ", callback_data="unx_ping"), InlineKeyboardButton(text="ǫᴏᴜᴛʟʏ", callback_data="unx_qoutly")],
             [InlineKeyboardButton(text="sʜᴏʀᴛ ᴜʀʟ", callback_data="unx_shorturl"), InlineKeyboardButton(text="sᴛᴀʀᴛ", callback_data="unx_start_help"), InlineKeyboardButton(text="sɴᴀᴍᴇ", callback_data="unx_sname")],
             [InlineKeyboardButton(text="ʏᴏᴜᴛᴜʙᴇ", callback_data="unx_yt"), InlineKeyboardButton(text="ᴇᴅɪᴛᴍᴏᴅᴇ", callback_data="unx_editmode"), InlineKeyboardButton(text="sᴏɴɢ", callback_data="ux_song")],
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="go_back_to_start"), InlineKeyboardButton(text="ᴡᴇʙss", callback_data="unx_webss")]]))
+        
 
 @app.on_callback_query(filters.regex("unx_ai"))
 async def cb_func_ai(_, query: CallbackQuery):
@@ -150,5 +150,9 @@ async def cb_func_back(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("source_lele"))
 async def cb_func_sourcelele(_, query: CallbackQuery):
-    await query.edit_message_media(media="CgACAgQAAx0CfK48pwABAe7hZiShdptz-vg7wf9j1a4C7XX6c_8AAtcCAALPLw1TdAXNVQkONjseBA", reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="go_back_to_start")]]))
+    await query.edit_message_media(
+        media="CgACAgQAAx0CfK48pwABAe7hZiShdptz-vg7wf9j1a4C7XX6c_8AAtcCAALPLw1TdAXNVQkONjseBA",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="go_back_to_start")]
+        ])
+    )
