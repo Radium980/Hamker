@@ -20,7 +20,7 @@ def add_user_database(user_id: int):
 
 @app.on_message(filters.command("help"))
 async def unxhelp(_, msg: Message):
-    await message.reply_photo("https://graph.org/file/657de4d577cc73f6832d4.jpg", caption=f"""➻ ʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ᴍᴇɴᴜ ᴏғ {app.me.mention} :""", reply_markup=InlineKeyboardMarkup([
+    await msg.reply_photo("https://graph.org/file/657de4d577cc73f6832d4.jpg", caption=f"""➻ ʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ᴍᴇɴᴜ ᴏғ {app.me.mention} :""", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ᴀɪ", callback_data="unx_ai"), InlineKeyboardButton(text="ɪᴍᴀɢᴇ ᴀɪ", callback_data="unx_imageai"), InlineKeyboardButton(text="ᴍɪᴅ ᴀɪ", callback_data="unx_midai")],
             [InlineKeyboardButton(text="ᴇᴅɪᴛᴍᴏᴅᴇ", callback_data="unx_editmode"), InlineKeyboardButton(text="ᴡᴇʟᴄᴏᴍᴇ", callback_data="unx_belcome"), InlineKeyboardButton(text="ǫᴏᴜᴛʟʏ", callback_data="unx_qoutly")],
             [InlineKeyboardButton(text="ɪᴍɢ", callback_data="unx_img"), InlineKeyboardButton(text="ᴘɪɴɢ", callback_data="unx_ping"), InlineKeyboardButton(text="ғɪɢʟᴇᴛ", callback_data="unx_figlet")],
