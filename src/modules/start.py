@@ -48,7 +48,7 @@ async def cb_func_help(_, query: CallbackQuery):
 @app.on_callback_query(filters.regex("unx_ai"))
 async def cb_func_ai(_, query: CallbackQuery):
     await query.message.edit_text(text="↬ /ai : ᴜꜱᴇ ꜰʀᴇᴇ ᴀɪ ᴡɪᴛʜᴏᴜᴛ ᴀᴘɪ ᴋᴇʏ.", reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="back")]])
+            [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="back")]]))
         
 @app.on_callback_query(filters.regex("unx_imageai"))
 async def cb_func_imageai(_, query: CallbackQuery):
