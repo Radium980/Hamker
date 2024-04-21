@@ -31,21 +31,21 @@ async def unxhelp(_, msg: Message):
 
 @app.on_callback_query(filters.regex("unx_ai"))
 async def cb_func_ai(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"↬ /ai : ᴜꜱᴇ ꜰʀᴇᴇ ᴀɪ ᴡɪᴛʜᴏᴜᴛ ᴀᴘɪ ᴋᴇʏ.\n↬ ᴛʀʏ /ai hi", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
+    await query.message.edit_text(text=f"↬ /ai : ᴜꜱᴇ ꜰʀᴇᴇ ᴀɪ ᴡɪᴛʜᴏᴜᴛ ᴀᴘɪ ᴋᴇʏ,", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
     
 @app.on_callback_query(filters.regex("unx_belcome"))
 async def cb_func_belcome(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"↬ /welcome : ᴏɴ/ᴏꜰꜰ ᴡᴇʟᴄᴏᴍᴇ ᴛᴇᴍᴘʟᴀᴛᴇ ꜰᴏʀ ᴡᴇʟᴄᴏᴍɪɴɢ ɴᴇᴡ ᴍᴇᴍʙᴇʀꜱ ɪɴ ɢʀᴏᴜᴘ.\n↬ ᴛʀʏ /welcome on/off", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text=f"↬ /welcome : ᴏɴ/ᴏꜰꜰ ᴡᴇʟᴄᴏᴍᴇ ᴛᴇᴍᴘʟᴀᴛᴇ ꜰᴏʀ ᴡᴇʟᴄᴏᴍɪɴɢ ɴᴇᴡ ᴍᴇᴍʙᴇʀꜱ ɪɴ ɢʀᴏᴜᴘ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
         
 @app.on_callback_query(filters.regex("unx_imageai"))
 async def cb_func_imageai(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"↬ /imagine : ɢɪᴠᴇ ᴘʀᴏᴍᴘᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ 𝟾ᴋ ᴀɪ ɪᴍᴀɢᴇs.\n↬ ᴛʀʏ /imagine sunset view", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text=f"↬ /imagine : ɢɪᴠᴇ ᴘʀᴏᴍᴘᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ 𝟾ᴋ ᴀɪ ɪᴍᴀɢᴇs.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("unx_midai"))
 async def cb_func_midai(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"↬ /mid : ɢɪᴠᴇ ᴘʀᴏᴍᴘᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴍɪᴅ ᴀɪ ɪᴍᴀɢᴇs.\n↬ ᴛʀʏ /mid a boy", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text=f"↬ /mid : ɢɪᴠᴇ ᴘʀᴏᴍᴘᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴍɪᴅ ᴀɪ ɪᴍᴀɢᴇs.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("unx_alive"))
@@ -55,12 +55,12 @@ async def cb_func_alive(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("unx_echo"))
 async def cb_func_imageai(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"↬ /echo : sᴇɴᴅs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ.\n↬ ᴛʀʏ /echo hi", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text=f"↬ /echo : sᴇɴᴅs ᴛʜᴇ ɢɪᴠᴇɴ ᴛᴇxᴛ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
     
 @app.on_callback_query(filters.regex("unx_figlet"))
 async def cb_func_figlet(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /figlet : ɢᴇɴᴇʀᴀᴛᴇs ᴀ ғɪɢʟᴇᴛ ᴏғ ɢɪᴠᴇɴ ɴᴀᴍᴇ.\n↬ ᴛʀʏ /figlet hi", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /figlet : ɢᴇɴᴇʀᴀᴛᴇs ᴀ ғɪɢʟᴇᴛ ᴏғ ɢɪᴠᴇɴ ɴᴀᴍᴇ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("unx_img"))
@@ -75,12 +75,12 @@ async def cb_func_ping(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("unx_qoutly"))
 async def cb_func_qoutly(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /q : ᴍᴀᴋᴇ's ᴀ ǫᴜᴏᴛᴇ ᴏғ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ.\n(ꜱᴛɪʟʟ ᴡᴏʀᴋɪɴɢ)", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /q : ᴍᴀᴋᴇ's ᴀ ǫᴜᴏᴛᴇ ᴏғ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("unx_shorturl"))
 async def cb_func_shorturl(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /shorturl : sʜᴏʀᴛᴇɴs ᴛʜᴇ ɢɪᴠᴇɴ ᴜʀʟ.\n↬ ᴛʀʏ /shorturl google.com", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /shorturl : sʜᴏʀᴛᴇɴs ᴛʜᴇ ɢɪᴠᴇɴ ᴜʀʟ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
     
 @app.on_callback_query(filters.regex("unx_sname"))
@@ -90,22 +90,22 @@ async def cb_func_sname(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("unx_yt"))
 async def cb_func_unxyt(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /yt : ʟɪɴᴋ ᴏʀ ɴᴀᴍᴇ ᴏғ ʏᴏᴜᴛᴜʙᴇ ᴠɪᴅᴇᴏ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ.\n↬ ᴛʀʏ /yt mood lofi", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /yt : ʟɪɴᴋ ᴏʀ ɴᴀᴍᴇ ᴏғ ʏᴏᴜᴛᴜʙᴇ ᴠɪᴅᴇᴏ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
     
 @app.on_callback_query(filters.regex("unx_editmode"))
 async def cb_func_editmode(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /editmode : ᴇᴅɪᴛᴍᴏᴅᴇ ᴏɴ/ᴏғғ ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴇᴅɪᴛᴇᴅ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ɢʀᴏᴜᴘs./n↬ ᴛʀʏ /editmode on/off", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /editmode : ᴇᴅɪᴛᴍᴏᴅᴇ ᴏɴ/ᴏғғ ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴇᴅɪᴛᴇᴅ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ɢʀᴏᴜᴘs.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("ux_song"))
 async def cb_func_song(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /song : ᴜsᴇ sᴏɴɢ ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴍᴜsɪᴄ.\n↬ ᴛʀʏ /song mood lofi", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /song : ᴜsᴇ sᴏɴɢ ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴍᴜsɪᴄ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("unx_webss"))
 async def cb_func_webss(_, query: CallbackQuery):
-    await query.message.edit_text(text="↬ /webss : ᴄᴀᴘᴛᴜʀᴇs ᴀ sᴄʀᴇᴇɴsʜᴏᴛ ᴏғ ᴛʜᴇ ɢɪᴠᴇɴ sɪᴛᴇ.\n↬ ᴛʀʏ /webss google.com", reply_markup=InlineKeyboardMarkup([
+    await query.message.edit_text(text="↬ /webss : ᴄᴀᴘᴛᴜʀᴇs ᴀ sᴄʀᴇᴇɴsʜᴏᴛ ᴏғ ᴛʜᴇ ɢɪᴠᴇɴ sɪᴛᴇ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
 @app.on_callback_query(filters.regex("go_back_to_start"))
