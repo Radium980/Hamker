@@ -39,10 +39,11 @@ async def start(_, m: Message):
 
 @app.on_callback_query(filters.regex("help"))
 async def cb_func_help(_, query: CallbackQuery):
-    await query.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="back")],
-        [InlineKeyboardButton(text="Ai", callback_data="unx_ai")],
-        [InlineKeyboardButton(text="image ai", callback_data="unx_imageai")]))
+    await query.edit_message_reply_markup(
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="back")],
+            [InlineKeyboardButton(text="Ai", callback_data="unx_ai")],
+            [InlineKeyboardButton(text="image ai", callback_data="unx_imageai")]]))
 
 @app.on_callback_query(filters.regex("unx_ai"))
 async def cb_func_ai(_, query: CallbackQuery):
