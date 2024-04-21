@@ -74,5 +74,5 @@ async def okbaby(client, message):
             return
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, message.chat.title, user.id)
-        return await app.send_photo(message.chat.id, accha, caption=f"""ᴜsᴇʀ ɪᴅ : `{message.reply_to_message.from_user.id}`\nɴᴀᴍᴇ : {message.reply_to_message.from_user.first_name}\n» ᴜsᴇʀɴᴀᴍᴇ : {message.reply_to_message.from_user.username}""")
+        return await message.reply_photo(accha, caption=f"""ᴜsᴇʀ ɪᴅ : `{message.reply_to_message.from_user.id}`\nɴᴀᴍᴇ : {message.reply_to_message.from_user.first_name}\n» ᴜsᴇʀɴᴀᴍᴇ : {message.reply_to_message.from_user.username}""")
 
