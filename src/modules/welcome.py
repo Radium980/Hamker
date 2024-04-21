@@ -47,24 +47,24 @@ async def welcomefunc(app, message) -> None:
         return await message.reply("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ.")
     
     if len(message.command) == 1:
-        return await message.reply("Usage: /welcome on/off")
+        return await message.reply("ᴜꜱᴀɢᴇ: /welcome on/off")
     status = message.command[1]
     if status == "on":
         check_status = WELCOME_DB.find_one({"group_id": message.chat.id})
         if not check_status:
             add_welcome_enable(message.chat.id)
-            return await message.reply("template welcome turned on !")
+            return await message.reply("ꜱᴜʀᴇ ɪ ᴡᴏᴜʟᴅ ʟɪᴋᴇ ᴛᴏ ᴡᴇʟᴄᴏᴍᴇ ɴᴇᴡ ᴍᴇᴍʙᴇʀꜱ.")
         else:
-            await message.reply("template welcome already enabled !")
+            await message.reply("ɪᴛ'ꜱ ᴀʟʀᴇᴀᴅʏ ᴇɴᴀʙʟᴇᴅ.")
     elif status == "off":
         check_status = WELCOME_DB.find_one({"group_id": message.chat.id})
         if not check_status:
-            return await message.reply("template welcome already disabled !")
+            return await message.reply("ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴅɪꜱᴀʙʟᴇᴅ.")
         else:
             remove_welcome_enable(message.chat.id)
-            return await message.reply("template welcome turned off !")
+            return await message.reply("ᴏʜᴋ ɪ ᴡɪʟʟ ʙᴇ Qᴜɪᴛᴇ ᴡʜᴇɴ ᴀɴʏᴏɴᴇ'ꜱ ᴊᴏɪɴ.")
     else:
-        return await message.reply("invalid syntax !")
+        return await message.reply("ɪɴᴠᴀʟɪᴅ ꜱʏɴᴛᴀx!\nᴛʀʏ /ᴡᴇʟᴄᴏᴍᴇ ᴏɴ/ᴏꜰꜰ")
 
 @app.on_message(filters.new_chat_members, group=6)
 async def okbaby(client, message):
@@ -74,5 +74,5 @@ async def okbaby(client, message):
             return
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, message.chat.title, user.id)
-        return await message.reply_photo(photo=accha)
+        return await app.send_photo(message.chat.id, accha, caption=f"""ᴜsᴇʀ ɪᴅ : `{message.reply_to_message.from_user.id}`\nɴᴀᴍᴇ : {message.reply_to_message.from_user.first_name}\n» ᴜsᴇʀɴᴀᴍᴇ : {message.reply_to_message.from_user.username}""")
 
