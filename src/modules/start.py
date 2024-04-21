@@ -34,7 +34,7 @@ async def start(_, m: Message):
     await m.reply_photo("https://telegra.ph/file/a0d157254f58e0d1a8850.jpg", caption=f"""🥀 ʜᴇʏ {m.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",
                          reply_markup=InlineKeyboardMarkup([
         [InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ᴇʟsᴇ ʏᴏᴜ ɢᴇʏ", url=f"https://t.me/{app.me.username}?startgroup=new")],
-        [InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"), InlineKeyboardButton(text="sᴏᴜʀᴄᴇ", callback_data="source_lele")]
+        [InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"), InlineKeyboardButton(text="ᴏᴡɴᴇʀ", user_id="6950368169")]
     ]))
 
 @app.on_callback_query(filters.regex("help"))
@@ -141,18 +141,8 @@ async def cb_func_back(_, query: CallbackQuery):
                     ],
                     [
                         InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"),
-                        InlineKeyboardButton(text="sᴏᴜʀᴄᴇ", callback_data="source_lele")
+                        InlineKeyboardButton(text="ᴏᴡɴᴇʀ", user_id="6950368169")
                     ]
                 ]
             )
-    )
-
-
-@app.on_callback_query(filters.regex("source_lele"))
-async def cb_func_sourcelele(_, query: CallbackQuery):
-    await query.edit_message_media(
-        media="CgACAgQAAx0CfK48pwABAe7hZiShdptz-vg7wf9j1a4C7XX6c_8AAtcCAALPLw1TdAXNVQkONjseBA",
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="go_back_to_start")]
-        ])
     )
