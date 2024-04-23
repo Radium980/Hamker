@@ -23,7 +23,7 @@ async def pfp(pfp, chat, id):
     pfp = Image.open(pfp).convert("RGBA")
     pfp = await circle(pfp, (363, 363))
     
-    font_path = "./src/fonts/Roboto-Medium.ttf"
+    font_path = "./src/fonts/font.ttf"
     m_font = ImageFont.truetype(font_path, 35)
     i_font = ImageFont.truetype(font_path, 20)
     
