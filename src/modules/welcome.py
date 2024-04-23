@@ -75,6 +75,6 @@ async def okbaby(client, message):
             continue  # Continue to the next iteration if welcome message is not enabled
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, message.chat.title, user.id)
-        await message.reply_photo(photo=accha)
+        return await message.reply_photo(photo=accha)
 
 
