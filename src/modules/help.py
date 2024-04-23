@@ -5,7 +5,7 @@ import random
 import os
 from pyrogram import filters
 from pyrogram.enums import ChatType
-from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton, CallbackQuery, InputMediaAnimation
 from src import app
 
 DATABASE = MongoClient(MONGO_DB_URI)
