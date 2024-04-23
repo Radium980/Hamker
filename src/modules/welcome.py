@@ -44,35 +44,37 @@ async def pfp(pfp,chat,id):
 async def welcomefunc(app, message) -> None:
     group_admin = await group_admins(message.chat.id)
     if message.from_user.id not in group_admin:
-        return await message.reply("ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ.")
+        return await message.reply("You are not an admin.")
     
-    if len(message.command) == 1:
-        return await message.reply("ᴜꜱᴀɢᴇ: /welcome on/off")
-    status = message.command[1]
+    if len(message.command) < 2:
+        return await message.reply("Usage: /welcome on/off")
+    
+    status = message.command[1].lower()  # Convert to lowercase for case-insensitive comparison
     if status == "on":
         check_status = WELCOME_DB.find_one({"group_id": message.chat.id})
         if not check_status:
             add_welcome_enable(message.chat.id)
-            return await message.reply("ꜱᴜʀᴇ ɪ ᴡᴏᴜʟᴅ ʟɪᴋᴇ ᴛᴏ ᴡᴇʟᴄᴏᴍᴇ ɴᴇᴡ ᴍᴇᴍʙᴇʀꜱ.")
+            return await message.reply("Sure, I would like to welcome new members.")
         else:
-            await message.reply("ɪᴛ'ꜱ ᴀʟʀᴇᴀᴅʏ ᴇɴᴀʙʟᴇᴅ.")
+            await message.reply("It's already enabled.")
     elif status == "off":
         check_status = WELCOME_DB.find_one({"group_id": message.chat.id})
         if not check_status:
-            return await message.reply("ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴅɪꜱᴀʙʟᴇᴅ.")
+            return await message.reply("Welcome message is already disabled.")
         else:
             remove_welcome_enable(message.chat.id)
-            return await message.reply("ᴏʜᴋ ɪ ᴡɪʟʟ ʙᴇ Qᴜɪᴛᴇ ᴡʜᴇɴ ᴀɴʏᴏɴᴇ'ꜱ ᴊᴏɪɴ.")
+            return await message.reply("Okay, I will be quiet when anyone joins.")
     else:
-        return await message.reply("ɪɴᴠᴀʟɪᴅ ꜱʏɴᴛᴀx!\nᴛʀʏ /ᴡᴇʟᴄᴏᴍᴇ ᴏɴ/ᴏꜰꜰ")
+        return await message.reply("Invalid syntax!\nTry /welcome on/off")
 
 @app.on_message(filters.new_chat_members, group=6)
 async def okbaby(client, message):
     for user in message.new_chat_members:
         check = WELCOME_DB.find_one({"group_id": message.chat.id})
         if not check:
-            return
+            continue  # Continue to the next iteration if welcome message is not enabled
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, message.chat.title, user.id)
-        return await message.reply_photo(photo=accha)
+        await message.reply_photo(photo=accha)
+
 
