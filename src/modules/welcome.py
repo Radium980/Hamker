@@ -3,8 +3,7 @@ from pyrogram.types import Message
 from src import app
 from src.database.welcome_db import *
 from src.modules.editmode import group_admins
-from PIL import Image,ImageOps,ImageDraw,ImageChops, ImageFont
-
+from PIL import Image, ImageDraw, ImageChops, ImageFont
 
 async def circle(pfp, size=(215, 215)):
     pfp = pfp.resize(size, Image.Resampling.LANCZOS).convert("RGBA")
@@ -17,26 +16,22 @@ async def circle(pfp, size=(215, 215)):
     pfp.putalpha(mask)
     return pfp
 
-async def pfp(pfp,chat,id):
+async def pfp(pfp, chat, id):
     if len(chat) > 21:
         chat = chat[0:18] + ".."
     temp = Image.open("./src/pics/bg.jpg")
     pfp = Image.open(pfp).convert("RGBA")
-    pfp = await circle(pfp,(363,363))
-    m_font = ImageFont.load_default(35)    
-    i_font = ImageFont.load_default(20)    
+    pfp = await circle(pfp, (363, 363))
+    
+    # Load your downloaded font
+    m_font = ImageFont.truetype(".src/fonts/Roboto-Medium.ttf", 35)
+    i_font = ImageFont.truetype(".src/fonts/Roboto-Medium.ttf", 20)
+    
     nice = temp.copy()
     nice.paste(pfp, (58, 131), pfp)
     draw = ImageDraw.Draw(nice)
-    draw.text((565,350),
-                text=f"{chat.upper()}",
-                font=m_font,
-                fill=(275,275,275))
-    
-    draw.text((180,525),
-                text=str(id),
-                font=i_font,
-                fill=(275,275,275))
+    draw.text((565, 350), text=f"{chat.upper()}", font=m_font, fill=(275, 275, 275))
+    draw.text((180, 525), text=str(id), font=i_font, fill=(275, 275, 275))
     nice.save(f"./src/pics/nice{id}.png")
     return f"./src/pics/nice{id}.png"
 
