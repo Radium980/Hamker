@@ -63,11 +63,15 @@ async def welcomefunc(app, message) -> None:
 
 @app.on_message(filters.new_chat_members, group=6)
 async def okbaby(client, message):
-    check = WELCOME_DB.find_one({"group_id": message.chat.id})
-    if not check:
-        return
+    group_admin = await group_admins(message.chat.id)
     for user in message.new_chat_members:
+        if user.id == client.me.id:  # Check if the bot itself is joining
+            return  # Skip
+        check = WELCOME_DB.find_one({"group_id": message.chat.id})
+        if not check:
+            return
         photo = await client.download_media(user.photo.big_file_id)
         accha = await pfp(photo, message.chat.title, user.id)
         await app.send_photo(message.chat.id, photo=accha, caption=f"""Iᴅ : `{user.id}`\nNᴀᴍᴇ : {user.mention}\nUsᴇʀɴᴀᴍᴇ : @{user.username}""")
+
 
