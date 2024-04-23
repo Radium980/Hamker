@@ -3,7 +3,7 @@ from config import MONGO_DB_URI
 import asyncio
 import random
 import os
-
+from src.modules.start import cb_func_help
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton, CallbackQuery
@@ -108,6 +108,15 @@ async def cb_func_webss(_, query: CallbackQuery):
     await query.message.edit_text(text="↬ /webss : ᴄᴀᴘᴛᴜʀᴇs ᴀ sᴄʀᴇᴇɴsʜᴏᴛ ᴏғ ᴛʜᴇ ɢɪᴠᴇɴ sɪᴛᴇ.", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
 
+@app.on_callback_query(filters.regex("lund_lele"))
+async def cb_func_media(_, query: CallbackQuery):
+    animation = InputMediaAnimation(
+        media="CgACAgQAAx0CfK48pwABAfkmZidRlKcT-3-NpTsviNZCckg95voAAtcCAALPLw1TdAXNVQkONjseBA"
+    )
+    await query.edit_message_media(media=animation, reply_markup=wapis_chleja)
+
+wapis_chleja = InlineKeyboardMarkup([[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help")]])
+
 @app.on_callback_query(filters.regex("go_back_to_start"))
 async def cb_func_back(_, query: CallbackQuery):
     check_user = collection.find_one({"user_id": query.from_user.id})
@@ -121,7 +130,7 @@ async def cb_func_back(_, query: CallbackQuery):
                     ],
                     [
                         InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"),
-                        InlineKeyboardButton(text="ᴏᴡɴᴇʀ", user_id="6950368169")
+                        InlineKeyboardButton(text="sᴏᴜʀᴄᴇ", callback_data="lund_lele")
                     ]
                 ]
             )
