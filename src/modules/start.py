@@ -3,11 +3,9 @@ from config import MONGO_DB_URI
 import asyncio
 import random
 import os
-
 from pyrogram import filters
 from pyrogram.enums import ChatType
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InputMediaAnimation, InputMediaPhoto
-from src.database.chats_db import add_served_chat
+from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton, CallbackQuery, InputMediaAnimation, InputMediaPhoto
 from src import app
 
 DATABASE = MongoClient(MONGO_DB_URI)
@@ -19,27 +17,9 @@ def add_user_database(user_id: int):
     if not check_user:
         return collection.insert_one({"user_id": user_id})
 
-
-@app.on_message(filters.new_chat_members, group=69)
-async def tgkichudai(client, message):
-    for member in message.new_chat_members:
-        if member.id == client.me.id:
-            await add_served_chat(message.chat.id)
-            await message.reply("ᴛʜᴀɴᴋs ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ ʜᴇʀᴇ !")
-
-
-@app.on_message(filters.command("start"))
-async def start(_, m: Message):
-    add_user_database(m.from_user.id)
-    await m.reply_photo("https://graph.org/file/de100bc3023706f58ffc0.jpg", caption=f"""🥀 ʜᴇʏ {m.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",
-                         reply_markup=InlineKeyboardMarkup([
-        [InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ᴇʟsᴇ ʏᴏᴜ ɢᴇʏ", url=f"https://t.me/{app.me.username}?startgroup=new")],
-        [InlineKeyboardButton(text="ʜᴇʟᴘ", callback_data="help"), InlineKeyboardButton(text="sᴏᴜʀᴄᴇ", callback_data="lund_lele")]
-    ]))
-
-@app.on_callback_query(filters.regex("help"))
-async def cb_func_help(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"""➻ ʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ᴍᴇɴᴜ ᴏғ {app.me.mention} :""", reply_markup=InlineKeyboardMarkup([
+@app.on_message(filters.command("help"))
+async def unxhelp(_, msg: Message):
+    await msg.reply_photo("https://graph.org/file/de100bc3023706f58ffc0.jpg", caption=f"""➻ ʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ᴍᴇɴᴜ ᴏғ {app.me.mention} :""", reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton(text="ᴀɪ", callback_data="unx_ai"), InlineKeyboardButton(text="ɪᴍᴀɢᴇ ᴀɪ", callback_data="unx_imageai"), InlineKeyboardButton(text="ᴍɪᴅ ᴀɪ", callback_data="unx_midai")],
             [InlineKeyboardButton(text="ᴇᴅɪᴛᴍᴏᴅᴇ", callback_data="unx_editmode"), InlineKeyboardButton(text="ᴡᴇʟᴄᴏᴍᴇ", callback_data="unx_belcome"), InlineKeyboardButton(text="ǫᴏᴜᴛʟʏ", callback_data="unx_qoutly")],
             [InlineKeyboardButton(text="ɪᴍɢ", callback_data="unx_img"), InlineKeyboardButton(text="ᴘɪɴɢ", callback_data="unx_ping"), InlineKeyboardButton(text="ғɪɢʟᴇᴛ", callback_data="unx_figlet")],
@@ -50,7 +30,7 @@ async def cb_func_help(_, query: CallbackQuery):
 
 @app.on_callback_query(filters.regex("unx_ai"))
 async def cb_func_ai(_, query: CallbackQuery):
-    await query.message.edit_text(text=f"↬ /ai : ᴜꜱᴇ ꜰʀᴇᴇ ᴀɪ ᴡɪᴛʜᴏᴜᴛ ᴀᴘɪ ᴋᴇʏ.", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
+    await query.message.edit_text(text=f"↬ /ai : ᴜꜱᴇ ꜰʀᴇᴇ ᴀɪ ᴡɪᴛʜᴏᴜᴛ ᴀᴘɪ ᴋᴇʏ,", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="help"), InlineKeyboardButton(text="ʜᴏᴍᴇ", callback_data="go_back_to_start")]]))
     
 @app.on_callback_query(filters.regex("unx_belcome"))
 async def cb_func_belcome(_, query: CallbackQuery):
