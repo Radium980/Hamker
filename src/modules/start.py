@@ -6,7 +6,7 @@ import os
 
 from pyrogram import filters
 from pyrogram.enums import ChatType
-from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InputMediaAnimation
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InputMediaAnimation, InputMediaPhoto
 from src.database.chats_db import add_served_chat
 from src import app
 
@@ -141,6 +141,10 @@ async def cb_func_back(_, query: CallbackQuery):
     check_user = collection.find_one({"user_id": query.from_user.id})
     if not check_user:
         add_user_database(query.from_user.id)
+    strtphoto = InputMediaPhoto(
+    media="AgACAgQAAxkBAAIFWGYnXgwYnu06CXfahwf7SBx19ONyAALdxTEbB1k5UdCalwOLx3X-AAgBAAMCAAN4AAceBA"
+    )
+    await query.message.edit_message_media(media=strtphoto)
     await query.message.edit_text(text=f"""🥀 ʜᴇʏ {query.from_user.mention},\n\nᴛʜɪs ɪs {app.me.mention},\nᴛʜᴇ ᴍᴏsᴛ ᴜsᴇʟᴇss ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴇᴠᴇʀ ᴍᴀᴅᴇ.""",        
         reply_markup=InlineKeyboardMarkup(
                 [
