@@ -14,7 +14,6 @@ gitpython
 hachoir
 heroku3
 motor
-Quartny
 pillow
 psutil
 pyfiglet
