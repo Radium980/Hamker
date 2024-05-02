@@ -7,7 +7,7 @@ from src import app
 import requests
 from pymongo import MongoClient
 from config import MONGO_DB_URI
-from Quartny import Ai
+from MukeshAPI import Ai
 
 DATABASE = MongoClient(MONGO_DB_URI)
 db = DATABASE["MAIN"]["USERS"]
