@@ -28,7 +28,7 @@ def chat_with_api(model, prompt):
     else:
         return "Error: Unable to connect to the API"
 
-@app.on_message(pyrogram.filters.command("ai1", ["!", "/", "."]))
+@app.on_message(pyrogram.filters.command("ai", ["!", "/", "."]))
 async def gptAi(app: pyrogram.Client, m):
     split_text = m.text.split(None, 1)
     if len(split_text) < 2:
