@@ -20,7 +20,6 @@ pyfiglet
 py-tgcalls==0.9.7
 pykeyboard
 pyyaml
-MukeshAPI
 httpx[http2]
 speedtest-cli
 spotipy
