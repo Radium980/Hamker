@@ -20,12 +20,17 @@ def add_user_to_db(user_id):
 def is_valid_url(url):
     return re.match(r'^https?://(?:www\.)?youtu\.?be(?:\.com)?/', url, re.IGNORECASE) is not None
 
-@app.on_message(filters.command("yt"))
+@app.on_message(filters.command("yt", ["!", "/", "."]))
 async def yt(_, msg: Message):
     try:
         add_user_to_db(msg.from_user.id)
 
-        query = msg.text.split(None, 1)[1]
+        split_text = msg.text.split(None, 1)
+        if len(split_text) < 2:
+            await msg.reply_text("Usage: `/yt (video link) or (video name)`")
+            return
+
+        query = split_text[1]
         if is_valid_url(query):
             yt = YouTube(query)
         else:
@@ -37,11 +42,12 @@ async def yt(_, msg: Message):
         cutie = f"video_{random.randint(1000, 9999)}"
         stream.download(filename=cutie)
         pop = f"""
-Hᴇʀᴇ ɪs ʏᴏᴜʀ ᴠɪᴅᴇᴏ.
-Rᴇǫᴜᴇsᴛᴇᴅ ʙʏ {msg.from_user.mention}
-Qᴜᴇʀʏ: `{query}`
-Dᴏᴡɴʟᴏᴀᴅᴇᴅ ʙʏ {app.me.mention}"""
+Here is your video.
+Requested by {msg.from_user.mention}
+Query: `{query}`
+Downloaded by {app.me.mention}"""
         await msg.reply_video(video=cutie, caption=pop)
         os.remove(cutie)
     except Exception as e:
-        await msg.reply_text(f"Failed to download the video {e}")
+        await msg.reply_text(f"Failed to download the video: {e}")
+
