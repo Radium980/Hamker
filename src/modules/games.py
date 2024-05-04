@@ -41,10 +41,10 @@ def get_readable_time(seconds: int) -> str:
 
 # ------ db codes -------
 import datetime
-from config import MONGO_URL
+from config import MONGO_DB_URI
 from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
 
-mongo = MongoCli(config.MONGO_DB_URI)
+mongo = MongoCli(MONGO_DB_URI)
 db = mongo.Anonymous
 gamesdb = db.games
 
