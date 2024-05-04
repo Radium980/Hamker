@@ -8,7 +8,7 @@ import asyncio
 
 PLAY_IMG = (
 	"https://telegra.ph/file/bfc45e04e2b94d1895485.jpg",
-  "https://telegra.ph/file/06a1d907a290b0f179085.jpg",
+        "https://telegra.ph/file/06a1d907a290b0f179085.jpg",
 	"https://telegra.ph/file/09eb42ef833bf21e398c3.jpg",
 	"https://telegra.ph/file/8c63e91be3db540292dd0.jpg",
 	"https://telegra.ph/file/0332660a0db7fd9d8310e.jpg",
