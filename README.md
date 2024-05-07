@@ -20,8 +20,6 @@
 - Get your [Necessary Variables](https://github.com/Mirzye/PythonCuxBot/blob/master/sample.env)
 - Upgrade and Update by :
 `sudo apt-get update && sudo apt-get upgrade -y`
-- Install Ffmpeg by :
-`sudo apt-get install python3-pip ffmpeg -y`
 - Install required packages by :
 `sudo apt-get install python3-pip -y`
 - Install pip by :
